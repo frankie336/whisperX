@@ -11,6 +11,10 @@ from .audio import CHUNK_LENGTH
 from .tokenizer import Tokenizer, get_tokenizer
 from .utils import compression_ratio
 
+print('decoding<---------')
+
+
+
 if TYPE_CHECKING:
     from .model import Whisper
 
@@ -708,3 +712,7 @@ def decode(model: "Whisper", mel: Tensor, options: DecodingOptions = DecodingOpt
         result = result[0]
 
     return result
+
+
+
+print('DONE DECODING <---------')

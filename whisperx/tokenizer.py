@@ -7,6 +7,9 @@ import numpy as np
 import torch
 from transformers import GPT2TokenizerFast
 
+print('Tokenizer.py<----------')
+
+
 LANGUAGES = {
     "en": "english",
     "zh": "chinese",

@@ -268,3 +268,5 @@ class Whisper(nn.Module):
     detect_language = detect_language_function
     transcribe = transcribe_function
     decode = decode_function
+
+    print('DONE MODELLING!<------------')

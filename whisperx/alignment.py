@@ -157,9 +157,12 @@ def align(
         "score": [],
     }
 
+
     # Assuming `transcript` is a list of segments
     """
     FN: added TQDM here 
+    This is a relatively short process, 
+    but added tqdm for bespoke reasons 
     """
     for sdx, segment in enumerate(tqdm(transcript, desc="Processing segments")):
         while True:

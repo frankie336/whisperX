@@ -22,6 +22,8 @@ if TYPE_CHECKING:
 
 
 
+print('Tanscribe.py<-------------')
+
 def transcribe(
     model: "Whisper",
     audio: Union[str, np.ndarray, torch.Tensor],
@@ -179,7 +181,22 @@ def transcribe(
     num_frames = mel.shape[-1]
     previous_seek_value = seek
 
-    with tqdm(total=num_frames, unit='frames', disable=verbose is not False) as pbar:
+    """
+    FN:
+    Removing the verbose constraint on 
+    verbose to show time left to process 
+    in all circumstances
+    The reason the tqdm statement might
+    not be working as expected is due to the 
+    condition used in the disable parameter. 
+    The condition verbose is not False 
+    can be confusing and may not produce 
+    the desired result.
+    Right now there is no TQDM on any
+    of rhe process 
+    """
+    #with tqdm(total=num_frames, unit='frames', disable=verbose is not False) as pbar:
+    with tqdm(total=num_frames, unit='frames') as pbar:
         while seek < num_frames:
             timestamp_offset = float(seek * HOP_LENGTH / SAMPLE_RATE)
             segment = pad_or_trim(mel[:, seek:], N_FRAMES).to(model.device).to(dtype)
@@ -762,5 +779,5 @@ def cli():
             wrd_segs = pd.concat([x["word-segments"] for x in result_aligned["segments"]])[['start','end']]
             wrd_segs.to_csv(exp_fp, sep='\t', header=None, index=False)
 if __name__ == "__main__":
-    print('transcribe.py<---------')
+    print('done transcribe.py<---------')
     cli()

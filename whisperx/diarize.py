@@ -1,6 +1,9 @@
 import numpy as np
 import pandas as pd
 
+
+print('diarize.py<----------------')
+
 def assign_word_speakers(diarize_df, result_segments, fill_nearest=False):
  
     for seg in result_segments:
