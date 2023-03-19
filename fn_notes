@@ -1,0 +1,38 @@
+Removing the verbose constraint on verbose to show time left to process in all circumstances
+
+The reason the tqdm statement might not be working as expected is due to the condition used in the disable parameter. The condition verbose is not False can be confusing and may not produce the desired result.
+
+
+transcribe.py:
+"""
+FN:
+Removing the verbose constraint on
+verbose to show time left to process
+in all circumstances
+The reason the tqdm statement might
+not be working as expected is due to the
+condition used in the disable parameter.
+The condition verbose is not False
+can be confusing and may not produce
+the desired result.
+Right now there is no TQDM on any
+of rhe process
+"""
+#with tqdm(total=num_frames, unit='frames', disable=verbose is not False) as pbar:
+with tqdm(total=num_frames, unit='frames') as pbar:
+    while seek < num_frames:
+        timestamp_offset = float(seek * HOP_LENGTH / SAMPLE_RATE)
+        segment = pad_or_trim(mel[:, seek:], N_FRAMES).to(model.device).to(dtype)
+        segment_duration = segment.shape[-1] * HOP_LENGTH / SAMPLE_RATE
+
+
+alignment.py
+
+# Assuming `transcript` is a list of segments
+"""
+FN: added TQDM here
+This is a relatively short process,
+but added tqdm for bespoke reasons
+"""
+for sdx, segment in enumerate(tqdm(transcript, desc="Processing segments")):
+    while True:
