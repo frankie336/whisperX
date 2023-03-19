@@ -15,6 +15,8 @@ from .utils import exact_div, format_timestamp, optional_int, optional_float, st
 from .vad import Binarize
 import pandas as pd
 
+from tqdm import tqdm
+
 if TYPE_CHECKING:
     from .model import Whisper
 
@@ -177,7 +179,7 @@ def transcribe(
     num_frames = mel.shape[-1]
     previous_seek_value = seek
 
-    with tqdm.tqdm(total=num_frames, unit='frames', disable=verbose is not False) as pbar:
+    with tqdm(total=num_frames, unit='frames', disable=verbose is not False) as pbar:
         while seek < num_frames:
             timestamp_offset = float(seek * HOP_LENGTH / SAMPLE_RATE)
             segment = pad_or_trim(mel[:, seek:], N_FRAMES).to(model.device).to(dtype)
@@ -760,4 +762,5 @@ def cli():
             wrd_segs = pd.concat([x["word-segments"] for x in result_aligned["segments"]])[['start','end']]
             wrd_segs.to_csv(exp_fp, sep='\t', header=None, index=False)
 if __name__ == "__main__":
+    print('transcribe.py<---------')
     cli()

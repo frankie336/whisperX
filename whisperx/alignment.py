@@ -2,6 +2,8 @@
 Forced Alignment with Whisper
 C. Max Bain
 """
+import time
+
 import numpy as np
 import pandas as pd
 from typing import List, Union, Iterator, TYPE_CHECKING
@@ -12,6 +14,11 @@ from dataclasses import dataclass
 from .audio import SAMPLE_RATE, load_audio
 from .utils import interpolate_nans
 
+from tqdm import tqdm
+
+
+
+print('Alignment.py<---')
 
 LANGUAGES_WITHOUT_SPACES = ["ja", "zh"]
 
@@ -41,6 +48,9 @@ DEFAULT_ALIGN_MODELS_HF = {
 
 
 def load_align_model(language_code, device, model_name=None):
+
+    print('HELLO ALLGN<------')
+
     if model_name is None:
         # use default model
         if language_code in DEFAULT_ALIGN_MODELS_TORCH:
@@ -147,7 +157,11 @@ def align(
         "score": [],
     }
 
-    for sdx, segment in enumerate(transcript):
+    # Assuming `transcript` is a list of segments
+    """
+    FN: added TQDM here 
+    """
+    for sdx, segment in enumerate(tqdm(transcript, desc="Processing segments")):
         while True:
             segment_align_success = False
 

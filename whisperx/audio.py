@@ -1,3 +1,4 @@
+
 import os
 from functools import lru_cache
 from typing import Union
@@ -22,15 +23,12 @@ N_FRAMES = exact_div(N_SAMPLES, HOP_LENGTH)  # 3000: number of frames in a mel s
 def load_audio(file: str, sr: int = SAMPLE_RATE):
     """
     Open an audio file and read as mono waveform, resampling as necessary
-
     Parameters
     ----------
     file: str
         The audio file to open
-
     sr: int
         The sample rate to resample the audio if necessary
-
     Returns
     -------
     A NumPy array containing the audio waveform, in float32 dtype.
@@ -78,7 +76,6 @@ def mel_filters(device, n_mels: int = N_MELS) -> torch.Tensor:
     """
     load the mel filterbank matrix for projecting STFT into a Mel spectrogram.
     Allows decoupling librosa dependency; saved using:
-
         np.savez_compressed(
             "mel_filters.npz",
             mel_80=librosa.filters.mel(sr=16000, n_fft=400, n_mels=80),
@@ -92,15 +89,12 @@ def mel_filters(device, n_mels: int = N_MELS) -> torch.Tensor:
 def log_mel_spectrogram(audio: Union[str, np.ndarray, torch.Tensor], n_mels: int = N_MELS):
     """
     Compute the log-Mel spectrogram of
-
     Parameters
     ----------
     audio: Union[str, np.ndarray, torch.Tensor], shape = (*)
         The path to audio or either a NumPy array or Tensor containing the audio waveform in 16 kHz
-
     n_mels: int
         The number of Mel-frequency filters, only 80 is supported
-
     Returns
     -------
     torch.Tensor, shape = (80, n_frames)

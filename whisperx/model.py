@@ -12,6 +12,8 @@ from .transcribe import transcribe as transcribe_function
 from .decoding import detect_language as detect_language_function, decode as decode_function
 
 
+print('Model.py<---------------')
+
 @dataclass
 class ModelDimensions:
     n_mels: int
