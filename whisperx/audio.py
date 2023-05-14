@@ -11,7 +11,7 @@ import torch.nn.functional as F
 from .utils import exact_div
 
 
-print('audio.py<---------------------------------')
+print('audio.py starts')
 
 # hard-coded audio hyperparameters
 SAMPLE_RATE = 16000
@@ -119,6 +119,6 @@ def log_mel_spectrogram(audio: Union[str, np.ndarray, torch.Tensor], n_mels: int
     log_spec = torch.maximum(log_spec, log_spec.max() - 8.0)
     log_spec = (log_spec + 4.0) / 4.0
 
-    print('DONE AUDIO<-------')
+    print('audio.py ends')
 
     return log_spec

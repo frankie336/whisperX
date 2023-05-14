@@ -12,7 +12,7 @@ from .transcribe import transcribe as transcribe_function
 from .decoding import detect_language as detect_language_function, decode as decode_function
 
 
-print('Model.py<---------------')
+print('model.py starts')
 
 @dataclass
 class ModelDimensions:
@@ -269,4 +269,4 @@ class Whisper(nn.Module):
     transcribe = transcribe_function
     decode = decode_function
 
-    print('DONE MODELLING!<------------')
+    print('model.py ends')

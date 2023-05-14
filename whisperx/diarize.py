@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 
-print('diarize.py<----------------')
+print('diarize.py starts')
 
 def assign_word_speakers(diarize_df, result_segments, fill_nearest=False):
  
@@ -57,3 +57,8 @@ class Segment:
         self.start = start
         self.end = end
         self.speaker = speaker
+
+
+
+
+print('diarize.py ends')

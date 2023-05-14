@@ -11,7 +11,7 @@ from .audio import CHUNK_LENGTH
 from .tokenizer import Tokenizer, get_tokenizer
 from .utils import compression_ratio
 
-print('decoding<---------')
+print('decoding.py starts')
 
 
 
@@ -715,4 +715,4 @@ def decode(model: "Whisper", mel: Tensor, options: DecodingOptions = DecodingOpt
 
 
 
-print('DONE DECODING <---------')
+print('decoding.py ends')

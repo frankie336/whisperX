@@ -3,7 +3,7 @@ import numpy as np
 from pyannote.core import Annotation, Segment, SlidingWindowFeature, Timeline
 from typing import List, Tuple, Optional
 
-print('vad.py<-------')
+print('vad.py starts')
 
 
 

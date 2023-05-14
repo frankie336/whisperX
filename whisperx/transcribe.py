@@ -22,7 +22,7 @@ if TYPE_CHECKING:
 
 
 
-print('Tanscribe.py<-------------')
+print('transcribe.py starts')
 
 def transcribe(
     model: "Whisper",
@@ -779,5 +779,9 @@ def cli():
             wrd_segs = pd.concat([x["word-segments"] for x in result_aligned["segments"]])[['start','end']]
             wrd_segs.to_csv(exp_fp, sep='\t', header=None, index=False)
 if __name__ == "__main__":
-    print('done transcribe.py<---------')
+    print('done transcribe.py')
     cli()
+
+
+
+

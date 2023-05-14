@@ -7,7 +7,7 @@ import numpy as np
 import torch
 from transformers import GPT2TokenizerFast
 
-print('Tokenizer.py<----------')
+print('tokenizer.py starts')
 
 
 LANGUAGES = {
@@ -332,3 +332,8 @@ def get_tokenizer(
         sot_sequence.append(transcribe if task == "transcribe" else translate)
 
     return Tokenizer(tokenizer=tokenizer, language=language, sot_sequence=tuple(sot_sequence))
+
+
+
+
+print('tokenizer.py ends')
