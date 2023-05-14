@@ -13,12 +13,11 @@ import torch
 from dataclasses import dataclass
 from .audio import SAMPLE_RATE, load_audio
 from .utils import interpolate_nans
-
 from tqdm import tqdm
 
 
 
-print('Alignment.py<---')
+print('Alignment.py starts')
 
 LANGUAGES_WITHOUT_SPACES = ["ja", "zh"]
 
