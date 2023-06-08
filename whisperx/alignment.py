@@ -28,7 +28,7 @@ DEFAULT_ALIGN_MODELS_TORCH = {
     "es": "VOXPOPULI_ASR_BASE_10K_ES",
     "it": "VOXPOPULI_ASR_BASE_10K_IT",
 }
-
+#
 DEFAULT_ALIGN_MODELS_HF = {
     "ja": "jonatasgrosman/wav2vec2-large-xlsr-53-japanese",
     "zh": "jonatasgrosman/wav2vec2-large-xlsr-53-chinese-zh-cn",
